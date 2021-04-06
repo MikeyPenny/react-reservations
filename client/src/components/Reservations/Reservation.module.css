@@ -1,0 +1,63 @@
+.Reservation {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.Header {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 20%;
+}
+
+.Header h3 {
+    margin-left: 20px;
+    color: #fff;
+    font-size: 2rem;
+}
+
+.Content {
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 60%;
+    overflow: auto;
+}
+
+
+.Footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 20%;
+    border-top: 1px solid #fff;
+}
+
+.Footer a {
+    text-decoration: none;
+}
+
+.Row {
+    display: flex;
+    width: 90%;
+    justify-content: flex-end;
+}
+
+@media (min-width: 1024px) {
+
+    .Scrollbar::-webkit-scrollbar {
+        width: 10px;
+        background-color: #fff; 
+    }
+    
+    .Scrollbar::-webkit-scrollbar-thumb {
+        border-radius: 10px;
+        box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+        background-color: #7c7c7c; 
+    }
+}

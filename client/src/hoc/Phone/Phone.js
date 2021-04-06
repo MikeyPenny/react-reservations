@@ -11,7 +11,9 @@ const Phone = (props) => {
 			</div>
 			<div className={classes.Screen}>{props.children}</div>
 			<div className={classes.Bottom}>
-				<div className={classes.HomeBtn}></div>
+				<div className={classes.HomeBtn}>
+					<div className={classes.HomeIcon}></div>
+				</div>
 			</div>
 		</div>
 	);

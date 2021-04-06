@@ -3,4 +3,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: #2a2a2a;
+}
+
+@media (min-width: 1024px) {
+    .Layout {
+        background-color: #554a4a;
+    }
 }
