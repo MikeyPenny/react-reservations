@@ -1,13 +1,20 @@
-import Phone from "./hoc/Phone/Phone";
+// import Phone from "./hoc/Phone/Phone";
+import { Route, Switch } from "react-router-dom";
 import Layout from "./hoc/Layout/Layout";
-import Loading from "./components/Loading/Loading";
+
+import Reservation from "./components/Reservations/Reservation";
+import CreateReservation from "./components/Reservations/CreateReservation/CreateReservation";
+import Wireframe from "./hoc/Frames/Wireframe";
 
 function App() {
 	return (
 		<Layout>
-			<Phone>
-        <Loading />
-      </Phone>
+			<Wireframe>
+				<Switch>
+					<Route path="/create" component={CreateReservation} />
+					<Route path="/" component={Reservation} />
+				</Switch>
+			</Wireframe>
 		</Layout>
 	);
 }

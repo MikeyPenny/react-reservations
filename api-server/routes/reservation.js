@@ -28,7 +28,7 @@ router.post("/new-reservation", async (req, res) => {
 	}
 });
 
-router.delete("/reservation/:id", async (req, res) => {
+router.delete("/:id", async (req, res) => {
 	try {
 		const reservation = await Reservation.findOne({ _id: req.params.id });
 

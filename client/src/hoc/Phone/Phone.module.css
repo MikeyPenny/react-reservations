@@ -3,7 +3,7 @@
     justify-content: center;
     
     flex-wrap: wrap;
-    height: 700px;
+    height: 96vh;
     width: 90%;
     border: 1px solid #ffffff;
     border-radius: 3%;
@@ -43,15 +43,25 @@
 .Cam {
     width: 2px;
     height: 2px;
-    border: 1px solid #ffffff;
+    border: 1px solid #fff;
     border-radius: 100%;
 }
 
 .HomeBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     height: 50px;
     width: 50px;
-    border: 1px solid #ffffff;
+    border: 1px solid #fff;
     border-radius: 100%;
+}
+
+.HomeIcon {
+    width: 65%;
+    height: 65%;
+    border: 1px solid #b4a9a9;
+    border-radius: 20%;
 }
 
 @media (min-width: 500px) {
