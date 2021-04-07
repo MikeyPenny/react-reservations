@@ -7,7 +7,7 @@ import { Reservation } from "../Reservations/Reservation";
 import ReservationList from "../Reservations/ReservationList/ReservationList";
 import CircularProgress from "@material-ui/core/CircularProgress/CircularProgress";
 import ReservationItem from "../Reservations/ReservationList/ReservationItem/ReservationItem";
-import { Link, MemoryRouter } from "react-router-dom";
+
 import Button from "@material-ui/core/Button";
 import CreateReservation from "./CreateReservation/CreateReservation";
 import Wireframe from "../../hoc/Frames/Wireframe";
@@ -41,29 +41,35 @@ describe("<Reservation />", () => {
 		},
 	];
 
-	beforeEach(() => {
-		wrapper = shallow(<Reservation />);
-	});
+	const setup = (comp) => shallow(comp);
+
+	const findByTestAttr = (wrapper, value) =>
+		wrapper.find(`[data-test='${value}']`);
 
 	it("should render a Loading component", () => {
-		wrapper.setProps({ isLoading: true });
-		expect(wrapper.find(CircularProgress)).toHaveLength(1);
+		wrapper = setup(<Reservation isLoading />);
+		// wrapper.setProps({ isLoading: true });
+		const loading = findByTestAttr(wrapper, "loading");
+		expect(loading.length).toBe(1);
 	});
 
 	it("should render a message given an empty list", () => {
+		wrapper = setup(<Reservation />);
 		wrapper.setProps({ isLoading: false, reservations: [] });
-		expect(wrapper.find(ReservationList).html()).toContain(
-			"There are no reservations"
-		);
+		const text = findByTestAttr(wrapper, "reserv-list").render().text();
+		expect(text).toContain("There are no reservations");
 	});
 
 	it("should render reservations given a non empty list", () => {
-		wrapper = shallow(<ReservationList reservations={reservList} />);
-		expect(wrapper.find(ReservationItem)).toHaveLength(reservList.length);
+		wrapper = setup(<ReservationList reservations={reservList} />);
+		const item = findByTestAttr(wrapper, "item-list");
+		expect(item.length).toBe(reservList.length);
 	});
 
-	it("should have a create reservation Button", () => {
-		wrapper.setProps({ isLoading: false, reservations: [] });
-		expect(wrapper.find(Button).text()).toBe("Create Reservation");
+	it("should be a button to create reservation", () => {
+		wrapper = setup(<Reservation />);
+		wrapper.setProps({ isLoading: false });
+		const button = findByTestAttr(wrapper, "create-button");
+		expect(button.length).toBe(1);
 	});
 });

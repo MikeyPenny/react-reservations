@@ -46,16 +46,17 @@ export const Reservation = (props) => {
 	}, [onFetchReservations, isLoading]);
 
 	const reservList = useMemo(() => {
-		return <ReservationList reservations={reservations} />;
+		return (
+			<ReservationList data-test="reserv-list" reservations={reservations} />
+		);
 	}, [reservations]);
 
-	const createReservationHandler = (e) => {
-		e.preventDefault();
+	const createReservationHandler = () => {
 		history.push("/create");
 	};
 
 	return (
-		<div className={classes.Reservation}>
+		<div data-test="component-reservation" className={classes.Reservation}>
 			<header className={classes.Header}>
 				<Typography variant="h3" gutterBottom>
 					Reservations
@@ -68,15 +69,16 @@ export const Reservation = (props) => {
 				<div className={classes.PopContainer}>
 					<PopOver anchor={anchorELem.current} />
 				</div>
-				{isLoading ? <CircularProgress /> : reservList}
+				{isLoading ? <CircularProgress data-test="loading" /> : reservList}
 			</section>
 			<footer className={classes.Footer}>
 				<div className={classes.Row}>
 					<Button
+						data-test="create-button"
 						className={styles.root}
 						variant="contained"
 						color="primary"
-						onClick={(e) => createReservationHandler(e)}
+						onClick={createReservationHandler}
 					>
 						Create Reservation
 					</Button>

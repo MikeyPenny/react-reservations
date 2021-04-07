@@ -14,6 +14,10 @@ const useStyles = makeStyles({
 	listItems: {
 		heigth: "100px",
 	},
+	emptyList: {
+		boxSizing: "border-box",
+		paddingLeft: "20px",
+	}
 });
 
 const ReservationList = (props) => {
@@ -24,13 +28,14 @@ const ReservationList = (props) => {
 			{props.reservations.length > 0
 				? props.reservations.map((reservation) => (
 						<ReservationItem
+							data-test="item-list"
 							key={reservation._id}
 							deleteId={reservation._id}
 							name={reservation.reservationName}
 							status={reservation.status}
 						/>
 				  ))
-				: "There are no reservations"}
+				: <div className={classes.emptyList}>There are no reservations</div>}
 		</List>
 	);
 };

@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React, { useCallback } from "react";
 import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
 
@@ -134,13 +134,13 @@ const CancelButton = withStyles((theme) => ({
 	},
 }))(Button);
 
-export const CreateReservation = (props) => {
+const CreateReservation = (props) => {
 	const { onCreateReservation } = props;
 	const history = useHistory();
 
 	const styles = useStyles();
 
-	const [reservationForm, setReservationForm] = useState({
+	const [reservationForm, setReservationForm] = React.useState({
 		reservationName: {
 			value: "",
 			validation: {
@@ -171,7 +171,7 @@ export const CreateReservation = (props) => {
 		},
 	});
 
-	const [isFormValid, setIsFormValid] = useState(false);
+	const [isFormValid, setIsFormValid] = React.useState(false);
 
 	const checkValidity = (value, rules) => {
 		let isValid = true;
@@ -236,7 +236,7 @@ export const CreateReservation = (props) => {
 	};
 
 	return (
-		<div className={classes.CreateReservation}>
+		<div data-test="component-create" className={classes.CreateReservation}>
 			<header className={classes.Header}>
 				<Typography variant="h3" gutterBottom>
 					Create Reservation
@@ -323,6 +323,7 @@ export const CreateReservation = (props) => {
 						Cancel
 					</CancelButton>
 					<CreateButton
+						data-test="form-btnCreate"
 						disabled={!isFormValid}
 						variant="contained"
 						color="primary"
